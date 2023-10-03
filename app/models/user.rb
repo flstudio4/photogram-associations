@@ -22,11 +22,11 @@ class User < ApplicationRecord
   ## Direct associations
 
   # User#comments: returns rows from the comments table associated to this user by the author_id column
-
+  belongs_to(:own_photos, :class_name => "Photo", :foreign_key => "owner_id")
   # User#own_photos: returns rows from the photos table  associated to this user by the owner_id column
 
   # User#likes: returns rows from the likes table associated to this user by the fan_id column
-
+  belongs_to(:likes, :class_name => "Like", :foreign_key => "fan_id")
   # User#sent_follow_requests: returns rows from the follow requests table associated to this user by the sender_id column
 
   # User#received_follow_requests: returns rows from the follow requests table associated to this user by the recipient_id column
